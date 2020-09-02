@@ -24,7 +24,7 @@ class Navbar extends React.Component {
             <span className="navbar-brand mb-0 h1">React Hoarder</span>
             <Link to="/" className="btn btn-primary ml-auto mr-4">Home</Link>
             <Link to="/stuff" className="btn btn-primary mr-4">My Stuff</Link>
-            <Link to="/new" className="btn btn-primary mr-4">New</Link>
+            <Link to="/stuff/new" className="btn btn-primary mr-4">New</Link>
             <Link to="#" className="btn btn-danger" onClick={this.logMeOut}>Logout</Link>
           </nav>
         </div>
