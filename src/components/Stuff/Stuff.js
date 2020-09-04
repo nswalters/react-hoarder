@@ -1,13 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import StuffCard from '../StuffCard/StuffCard';
+
+import stuffData from '../../helpers/data/stuffData';
 
 class Stuff extends React.Component {
+  state = {
+    stuff: [],
+  }
+
+  componentDidMount() {
+    stuffData.getAllStuff()
+      .then((stuff) => this.setState({ stuff }))
+      .catch((err) => {console.error('Error getting all stuff: ', err)});
+  }
+
   render() {
+    const { stuff } = this.state;
+
+    const stuffCards = stuff.map((item) => <StuffCard key={item.id} item={item} />);
+
     return (
       <div>
         <h1>My Stuff</h1>
-        <Link to="/edit/12345" className="btn btn-primary mr-5">Edit</Link>
-        <Link to="/stuff/12345" className="btn btn-secondary mr-5">Single</Link>
+        <div className="StuffCard">
+          <div className="card-columns">
+            { stuffCards }
+          </div>
+        </div>
       </div>
     );
   }
