@@ -1,4 +1,6 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import StuffCard from '../StuffCard/StuffCard';
 
@@ -10,7 +12,7 @@ class Stuff extends React.Component {
   }
 
   getStuff = () => {
-    stuffData.getAllStuff()
+    stuffData.getAllStuff(firebase.auth().currentUser.uid)
       .then((stuff) => this.setState({ stuff }))
       .catch((err) => {console.error('Error getting all stuff: ', err)});
   }
