@@ -28,4 +28,6 @@ const getStuffById = (stuffId) => axios.get(`${baseUrl}/stuff/${stuffId}.json`);
 
 const deleteStuffById = (stuffId) => axios.delete(`${baseUrl}/stuff/${stuffId}.json`);
 
-export default { createStuff, deleteStuffById, getAllStuff, getStuffById, };
+const updateStuffById = (stuffId, newStuffObj) => axios.put(`${baseUrl}/stuff/${stuffId}.json`, newStuffObj);
+
+export default { createStuff, deleteStuffById, getAllStuff, getStuffById, updateStuffById, };

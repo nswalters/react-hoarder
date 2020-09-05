@@ -1,4 +1,6 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import stuffData from '../../helpers/data/stuffData';
 
@@ -7,6 +9,7 @@ class New extends React.Component {
     itemName: '',
     itemDescription: '',
     itemImage: '',
+    uid: '',
   }
 
   formSubmitHandler = (e) => {
@@ -16,6 +19,7 @@ class New extends React.Component {
       itemName: this.state.itemName,
       itemDescription: this.state.itemDescription,
       itemImage: this.state.itemImage,
+      uid: firebase.auth().currentUser.uid,
     }
 
     stuffData.createStuff(newItemObj)
