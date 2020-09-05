@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class StuffCard extends React.Component {
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+    deleteItem: PropTypes.func.isRequired,
+  }
 
   render() {
-    const { item } = this.props;
+    const { item, deleteItem } = this.props;
 
     const detailsLink = `/stuff/${item.id}`
 
@@ -18,6 +23,7 @@ class StuffCard extends React.Component {
             <Link to="/edit/12345" className="btn btn-primary mx-2">Edit</Link>
             <Link to={ detailsLink } className="btn btn-secondary mx-2">Details</Link>
           </div>
+            <button onClick={() => {deleteItem(item.id)}} className="btn btn-danger mx-2 mt-2">Delete</button>
         </div>
       </div>
     );

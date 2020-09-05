@@ -26,4 +26,6 @@ const getAllStuff = () => new Promise((resolve, reject) => {
 
 const getStuffById = (stuffId) => axios.get(`${baseUrl}/stuff/${stuffId}.json`);
 
-export default { createStuff, getAllStuff, getStuffById, };
+const deleteStuffById = (stuffId) => axios.delete(`${baseUrl}/stuff/${stuffId}.json`);
+
+export default { createStuff, deleteStuffById, getAllStuff, getStuffById, };
