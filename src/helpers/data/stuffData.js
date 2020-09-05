@@ -5,8 +5,8 @@ const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
 const createStuff = (newStuff) => axios.post(`${baseUrl}/stuff.json`, newStuff);
 
-const getAllStuff = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/stuff.json`)
+const getAllStuff = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/stuff.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const allStuff = response.data;
       const theStuff = [];

@@ -42,7 +42,6 @@ class Edit extends React.Component {
   getStuff = () => {
     stuffData.getStuffById(this.props.match.params.stuffId)
       .then((response) => {
-        console.error(response);
         const {itemName, itemDescription, itemImage, uid} = response.data;
         this.setState({itemName, itemDescription, itemImage, uid});
       })
