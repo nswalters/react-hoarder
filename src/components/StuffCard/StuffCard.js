@@ -11,7 +11,8 @@ class StuffCard extends React.Component {
   render() {
     const { item, deleteItem } = this.props;
 
-    const detailsLink = `/stuff/${item.id}`
+    const detailsLink = `/stuff/${item.id}`;
+    const editLink = `/edit/${item.id}`;
 
     return (
       <div className="card ml-2">
@@ -20,7 +21,7 @@ class StuffCard extends React.Component {
           <h5 className="card-title">{item.itemName}</h5>
           <p className="card-text text-truncate">{item.itemDescription}</p>
           <div className="d-flex justify-content-center">
-            <Link to="/edit/12345" className="btn btn-primary mx-2">Edit</Link>
+            <Link to={ editLink } className="btn btn-primary mx-2">Edit</Link>
             <Link to={ detailsLink } className="btn btn-secondary mx-2">Details</Link>
           </div>
             <button onClick={() => {deleteItem(item.id)}} className="btn btn-danger mx-2 mt-2">Delete</button>
