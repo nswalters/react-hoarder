@@ -9,16 +9,26 @@ class Stuff extends React.Component {
     stuff: [],
   }
 
-  componentDidMount() {
+  getStuff = () => {
     stuffData.getAllStuff()
       .then((stuff) => this.setState({ stuff }))
       .catch((err) => {console.error('Error getting all stuff: ', err)});
   }
 
+  deleteItem = (itemId) => {
+    stuffData.deleteStuffById(itemId)
+      .then(() => this.getStuff())
+      .catch((err) => console.error("Delete item failed: ", err));
+  }
+
+  componentDidMount() {
+    this.getStuff();
+  }
+
   render() {
     const { stuff } = this.state;
 
-    const stuffCards = stuff.map((item) => <StuffCard key={item.id} item={item} />);
+    const stuffCards = stuff.map((item) => <StuffCard key={item.id} item={item} deleteItem={this.deleteItem} />);
 
     return (
       <div>

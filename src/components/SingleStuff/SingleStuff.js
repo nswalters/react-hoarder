@@ -13,6 +13,14 @@ class SingleStuff extends React.Component {
       .catch((err) => {console.error("Could not get single stuff: ", err)});
   }
 
+  deleteItem = () => {
+    const { stuffId } = this.props.match.params;
+    stuffData.deleteStuffById(stuffId)
+      .then(() => this.props.history.push('/stuff'))
+      .catch((err) => console.error('Delete single item failed: ', err));
+  }
+
+
   render() {
     const { item } = this.state;
 
@@ -25,6 +33,7 @@ class SingleStuff extends React.Component {
             <div className="card-body">
               <h5 className="card-title">{item.itemName}</h5>
               <p className="card-text">{item.itemDescription}</p>
+              <button onClick={this.deleteItem} className="btn btn-danger mx-auto mt-2">Delete</button>
             </div>
           </div>
         </div>
